@@ -279,7 +279,9 @@ export async function getDashboardData() {
       },
     };
   } catch (error) {
-    console.error("Error fetching dashboard data:", error.message);
+    if (error.digest !== "DYNAMIC_SERVER_USAGE") {
+      console.error("Error fetching dashboard data:", error.message);
+    }
     return {
       success: false,
       error: error.message,
